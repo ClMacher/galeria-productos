@@ -1,0 +1,43 @@
+<div class="card border-primary mb-3 text-center">
+    <div class="card-header">Lista de Productos</div>
+    <div class="card-body text-primary">
+      <div class="table-responsive">
+        <table class="table" *ngIf="products && products.length">
+          <thead>
+            <tr>
+              <th>
+                <button class="btn btn-primary" (click)="toggleImage()">
+                  <i class="fa fa-eye"></i>
+                  {{showImage ? 'Ocultar' : 'Mostrar'}} Imágenes
+                </button>
+              </th>
+              <th>Producto</th>
+              <th>Código</th>
+              <th>Disponible</th>
+              <th>Precio</th>
+              <th>Rating</th>
+            </tr>
+          </thead>
+          <tr *ngFor="let product of products">
+            <!--  PRODUCTOS -->
+
+            <!-- ..\..\assets\sin-imagen.png -->
+            <td><img [src]='product.imageUrl | default: "https://cdn-icons-png.flaticon.com/512/85/85488.png"'
+                [title]='product.productName | uppercase' 
+                [style.width.px]='imageWidth'
+                [style.margin.px]='imageMargin'
+                *ngIf="showImage">
+            </td>
+
+            <!-- <img [src]="imageUrl | default: 'default-image-url"'/> -->
+            
+            <td>{{product.productName}}</td>
+            <td>{{product.productCode | lowercase}}</td>
+            <td>{{product.releaseDate | date:'dd/MM/yyyy'}}</td>
+            <td>{{product.price}}</td>
+            <td><app-star [rating]="product.starRating"></app-star></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
