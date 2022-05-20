@@ -12,6 +12,8 @@ import localeEsCl from '@angular/common/locales/es-CL';
 import { StarComponent } from './product/product-list/star/star.component';
 import { DefaultPipe } from './shared/image.pipe';
 
+import { HttpClientModule } from '@angular/common/http';
+
 //Registrar el LOCALE
 registerLocaleData(localeEsCl, 'es-CL');
 
@@ -24,7 +26,8 @@ registerLocaleData(localeEsCl, 'es-CL');
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [{provide: LOCALE_ID, useValue: 'es-CL'}],
   bootstrap: [AppComponent]
